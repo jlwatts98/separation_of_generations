@@ -1621,7 +1621,8 @@ gs_df = as.data.frame(gs_data) |>
                               "Last Interglacial",
                               "Pleistocene",
                               "mid-Pliocene warm period")) |>
-    dplyr::select(climate, gametophyte, sporophyte, overlap)
+    dplyr::select(climate, gametophyte, sporophyte, overlap) |>
+    dplyr::mutate_if(is.numeric, round, digits=0)
 
 # write into a table .txt file and import into Word
 write.table(gs_df, file = "objects/table1.txt", sep = ",",
